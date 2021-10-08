@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mai.cybermoneywidget">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name="com.mai.cybermoneywidget.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MyApplication"
+        android:usesCleartextTraffic="true">
+
+        <activity
+            android:name="com.mai.cybermoneywidget.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name="com.mai.cybermoneywidget.widget.MainWidgetDark"
+            android:exported="true"
+            android:label="Dark">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="${applicationId}.widget.UPDATE_ALL" />
+                <action android:name="${applicationId}.update_now" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/main_widget_dark" />
+        </receiver>
+
+        <receiver
+            android:name="com.mai.cybermoneywidget.widget.MainWidgetLight"
+            android:exported="true"
+            android:label="Light">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.bwkj.qcxbm.widget.UPDATE_ALL" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/main_widget_light" />
+        </receiver>
+
+        <service android:name="com.mai.cybermoneywidget.UpdateService"
+            android:exported="true"/>
+    </application>
+
+</manifest>
