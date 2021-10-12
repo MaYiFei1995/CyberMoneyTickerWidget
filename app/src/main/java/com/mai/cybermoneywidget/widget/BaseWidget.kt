@@ -11,7 +11,7 @@ import android.widget.RemoteViews
 import com.mai.cybermoneywidget.App
 import com.mai.cybermoneywidget.BuildConfig
 import com.mai.cybermoneywidget.R
-import com.mai.cybermoneywidget.UpdateService
+//import com.mai.cybermoneywidget.UpdateService
 import com.mai.cybermoneywidget.mmkv.MMKVUtils
 
 open class BaseWidget : AppWidgetProvider() {
@@ -24,22 +24,23 @@ open class BaseWidget : AppWidgetProvider() {
         if (intent!!.action == "${BuildConfig.APPLICATION_ID}.update_now") {
             mode = intent.getIntExtra("style_mode", 0)
             refreshView(context!!, mode)
-        } else {
-            val intent2 = Intent(context, UpdateService::class.java)
-            context?.startService(intent2);
         }
+//        else {
+//            val intent2 = Intent(context, UpdateService::class.java)
+//            context?.startService(intent2);
+//        }
     }
 
     override fun onEnabled(context: Context?) {
         super.onEnabled(context)
-        val intent = Intent(context, UpdateService::class.java)
-        context?.startService(intent);
+//        val intent = Intent(context, UpdateService::class.java)
+//        context?.startService(intent);
     }
 
     override fun onDisabled(context: Context?) {
         super.onDisabled(context)
-        val intent = Intent(context, UpdateService::class.java)
-        context?.stopService(intent);
+//        val intent = Intent(context, UpdateService::class.java)
+//        context?.stopService(intent);
     }
 
     override fun onUpdate(
